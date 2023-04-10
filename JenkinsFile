@@ -1,27 +1,35 @@
 pipeline {
-	agent any
-	stages {
-		stage('checkout'){
-			steps {
-				git 'https://github.com/nigelbrennan/CICDproject.git'
-			}
-		}
-		stage('Build'){
-			steps {
-				bat "mvn clean compile"
-			}
-		}
-		stage('test'){
-			steps {
-			 	bat "mvn test"
-			 	junit '**/target/surefire-reports/TEST-*.xml'
-			 }
-		}
-		stage('Package') {
-			steps {
-				bat "mvn package"
-			}
-		}		
-	}
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Compile') {
+            steps {
+                sh 'javac src/*.java'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'java -cp src org.junit.runner.JUnitCore test.TestSuite'
+            }
+        }
+        
+        stage('Package') {
+            steps {
+                sh 'mkdir -p build/libs'
+                sh 'jar cvf build/libs/myapp.jar src/*.class'
+            }
+            post {
+                always {
+                    archiveArtifacts 'build/libs/*.jar'
+                }
+            }
+        }
+    }
 }
-				

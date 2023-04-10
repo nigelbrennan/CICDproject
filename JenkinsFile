@@ -3,7 +3,7 @@ pipeline {
 	stages {
 		stage('checkout'){
 			steps {
-				git 'https://...'
+				git 'https://github.com/nigelbrennan/CICDproject.git'
 			}
 		}
 		stage('Build'){

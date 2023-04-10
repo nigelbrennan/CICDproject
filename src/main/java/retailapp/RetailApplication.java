@@ -3,16 +3,6 @@ package retailapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//sfdhfjklfiheeb hbsdjdj
-//hdbnm,fghj fghjghj fghjkfghj
-
-
-
-//fgj shhsjs udhjdosso oojh
-
-//shshsj
-
-
 @SpringBootApplication
 public class RetailApplication {
 

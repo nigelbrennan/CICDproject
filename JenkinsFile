@@ -1,35 +1,27 @@
 pipeline {
     agent any
-    
+    tools { 
+        maven 'maven-3.8.6' 
+    }
     stages {
-        stage('Checkout') {
+        stage('Checkout git') {
             steps {
-                checkout scm
+               git branch: 'main', url: 'https://github.com/nigelbrennan/CICDproject.git'
             }
         }
         
-        stage('Compile') {
+        stage ('Build & JUnit Test') {
             steps {
-                sh 'javac src/*.java'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                sh 'java -cp src org.junit.runner.JUnitCore test.TestSuite'
-            }
-        }
-        
-        stage('Package') {
-            steps {
-                sh 'mkdir -p build/libs'
-                sh 'jar cvf build/libs/myapp.jar src/*.class'
+                sh 'mvn install' 
             }
             post {
-                always {
-                    archiveArtifacts 'build/libs/*.jar'
-                }
+               success {
+                    junit 'target/surefire-reports/**/*.xml'
+                }   
             }
         }
+ 
     }
 }
+
+

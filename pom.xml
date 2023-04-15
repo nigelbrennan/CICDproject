@@ -9,6 +9,8 @@
 		<version>2.7.7</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
+	<artifactId>retailappmicroservice</artifactId>
 
 <dependencies>
 	

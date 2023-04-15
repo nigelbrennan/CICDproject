@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout git') {
             steps {
-               git branch: 'main', url: 'https://github.com/nigelbrennan/CICDproject.git'
+               git branch: 'main', url: 'https://github.com/nigelbrennan/CICDproject/tree/main/Microservices/Microservice-retail-app'
             }
         }
         

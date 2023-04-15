@@ -9,7 +9,7 @@ pipeline {
         
         stage ('Build & JUnit Test') {
             steps {
-                 bat "mvn clean package"
+                 bat "mvn clean compile"
             }
             post {
                success {

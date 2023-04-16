@@ -7,6 +7,16 @@ pipeline {
             }
         }
         
+        stage ('Build & JUnit Test') {
+            steps {
+                 bat "mvn clean package"
+            }
+            post {
+               success {
+                    junit 'target/surefire-reports/**/*.xml'
+                }   
+            }
+        }
  
     }
 }

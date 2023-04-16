@@ -1,0 +1,7 @@
+retailapp\RetailApplication.class
+retailapp\SpringFoxConfig.class
+retailapp\Configuration.class
+retailapp\controllers\RetailAppRestController.class
+retailapp\exceptions\ItemNotFoundException.class
+retailapp\model\RetailApp.class
+retailapp\repos\RetailAppRepo.class
